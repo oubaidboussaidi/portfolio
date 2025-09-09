@@ -1,0 +1,20 @@
+2024-09-09 14:20 -- update components
+2024-09-09 15:10 -- refine hero section layout (finally)
+2024-09-12 18:45 -- clean images folder a bit
+2024-09-18 11:05 -- navbar minor fixes
+2024-09-18 13:22 -- added logos because aesthetic
+2024-09-25 17:30 -- touchup: feature cards
+2024-10-02 10:10 -- spacing adjustments cause why not
+2024-10-02 10:45 -- button hover improvements
+2024-10-02 11:00 -- hero animations tuned
+2024-10-11 16:10 -- experience section looks cooler now
+2024-10-19 13:50 -- added tech stack icons
+2024-10-19 14:00 -- small cleanup idk
+2024-10-19 14:10 -- more image compression
+2024-10-19 14:20 -- nav links alignment
+2024-10-28 19:30 -- contact section polish
+2024-11-03 12:40 -- tidied code structure
+2024-11-03 13:05 -- minor refactor
+2024-11-07 16:50 -- styling fix x100
+2024-11-07 17:00 -- shuffled imports for peace
+2024-11-11 21:10 -- final push of the day (i need sleep)
