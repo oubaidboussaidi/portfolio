@@ -1,52 +1,42 @@
-# React + Vite
+# 🖥️ Oubaid Boussaidi – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive **personal portfolio website** built with **Next.js** to showcase my projects, skills, and developer journey.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚡ Built with **Next.js 14** for speed and SEO  
+- 🎨 Styled using **Tailwind CSS** for a modern look  
+- 📱 Fully responsive design  
+- 💬 Integrated **EmailJS** contact form — send me messages directly from the site  
+- 🧩 Organized and reusable React components  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
 
-Commit placeholder 0
+## 🧰 Technologies Used
 
-Commit placeholder 1
+- **Framework:** [Next.js](https://nextjs.org/)  
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)  
+- **Email Service:** [EmailJS](https://www.emailjs.com/)  
+- **Version Control:** Git & GitHub  
+- **Deployment:** Vercel  
 
-Commit placeholder 2
+---
 
-Commit placeholder 3
+## ⚙️ Installation & Setup
 
-Commit placeholder 4
+To run this project locally:
 
-Commit placeholder 5
+```bash
+# Clone the repository
+git clone https://github.com/oubaidboussaidi/portfolio.git
 
-Commit placeholder 6
+# Navigate to the project folder
+cd portfolio
 
-Commit placeholder 7
+# Install dependencies
+npm install
 
-Commit placeholder 8
-
-Commit placeholder 9
-
-Commit placeholder 10
-
-Commit placeholder 11
-
-Commit placeholder 12
-
-Commit placeholder 13
-
-Commit placeholder 14
-
-Commit placeholder 15
-
-Commit placeholder 16
-
-Commit placeholder 17
-
-Commit placeholder 18
-
-Commit placeholder 19
+# Start the development server
+npm run dev
