@@ -16,50 +16,31 @@ const Experience = () => {
       // Animate the card coming in from the left
       // and fade in
       gsap.from(card, {
-        // Move the card in from the left
-        xPercent: -100,
-        // Make the card invisible at the start
+        xPercent: -50,
         opacity: 0,
-        // Set the origin of the animation to the left side of the card
-        transformOrigin: "left left",
-        // Animate over 1 second
+        transformOrigin: "left center",
         duration: 1,
-        // Use a power2 ease-in-out curve
-        ease: "power2.inOut",
-        // Trigger the animation when the card is 80% of the way down the screen
+        ease: "power2.out",
+        force3D: true,
         scrollTrigger: {
-          // The card is the trigger element
           trigger: card,
-          // Trigger the animation when the card is 80% down the screen
-          start: "top 80%",
+          start: "top 90%",
+          toggleActions: "play none none reverse"
         },
       });
     });
 
-    // Animate the timeline height as the user scrolls
-    // from the top of the timeline to 70% down the screen
-    // The timeline height should scale down from 1 to 0
-    // as the user scrolls up the screen
     gsap.to(".timeline", {
-      // Set the origin of the animation to the bottom of the timeline
-      transformOrigin: "bottom bottom",
-      // Animate the timeline height over 1 second
-      ease: "power1.inOut",
-      // Trigger the animation when the timeline is at the top of the screen
-      // and end it when the timeline is at 70% down the screen
+      transformOrigin: "bottom center",
+      ease: "none",
+      force3D: true,
       scrollTrigger: {
         trigger: ".timeline",
         start: "top center",
-        end: "70% center",
-        // Update the animation as the user scrolls
-        onUpdate: (self) => {
-          // Scale the timeline height as the user scrolls
-          // from 1 to 0 as the user scrolls up the screen
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
-        },
+        end: "80% center",
+        scrub: true
       },
+      scaleY: 0
     });
 
     // Loop through each expText element and animate them in
