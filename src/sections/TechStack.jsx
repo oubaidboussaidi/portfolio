@@ -78,9 +78,120 @@ const TechStack = () => {
         </div>
 
         <div className="flex flex-col xl:flex-row gap-12 items-center justify-center pb-12">
-          {/* Bigger, More Vertical Schema */}
-          <div className="relative w-full max-w-[700px] h-[550px] flex items-center justify-center">
-            {/* Center Hub */}
+          {/* ===== NEW SCHEMA: Vertical Layered Stack ===== */}
+          <div className="relative w-full max-w-[900px]">
+            {/* Stack Title */}
+            <div className="text-center mb-8">
+              <h3 className="text-sm font-black text-blue-400 uppercase tracking-[0.3em] mb-2">Architecture Layers</h3>
+              <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent mx-auto" />
+            </div>
+
+            {/* Vertical Stack - Each layer flows down */}
+            <div className="relative space-y-6">
+              {layers.map((layer, idx) => (
+                <div
+                  key={layer.id}
+                  onClick={() => handleCardClick(layer.id)}
+                  className="blueprint-card group cursor-pointer"
+                >
+                  {/* Connection Line to Next Layer */}
+                  {idx < layers.length - 1 && (
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full w-[2px] h-6 bg-gradient-to-b from-white/20 to-transparent z-0" />
+                  )}
+
+                  <div className={`relative bg-black border-2 rounded-2xl p-4 transition-all duration-500 h-[120px]
+                                   ${activeLayer === layer.id ? "scale-105 shadow-2xl" : "hover:scale-[1.02]"}`}
+                    style={{
+                      borderColor: activeLayer === layer.id ? layer.color : 'rgba(255,255,255,0.1)',
+                      boxShadow: activeLayer === layer.id ? `0 0 60px ${layer.color}40` : 'none'
+                    }}>
+
+                    <div className="flex items-center gap-4 h-full">
+                      {/* Layer Number */}
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden group-hover:border-white/30 transition-colors">
+                        <div className="absolute inset-0 bg-gradient-to-br opacity-10" style={{ background: `linear-gradient(135deg, ${layer.color}, transparent)` }} />
+                        <span className="text-xl font-bold relative z-10">{idx + 1}</span>
+                      </div>
+
+                      {/* Layer Icon */}
+                      <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${layer.color}20` }}>
+                        <span className="text-xl">
+                          {layer.id === 'design' && '📐'}
+                          {layer.id === 'frontend' && '💻'}
+                          {layer.id === 'backend' && '⚙️'}
+                          {layer.id === 'database' && '🗄️'}
+                        </span>
+                      </div>
+
+                      {/* Layer Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="text-base font-black text-white uppercase tracking-tight group-hover:text-blue-400 transition-colors">
+                            {layer.title}
+                          </h4>
+                          <span className="text-[8px] font-black text-white/20 uppercase tracking-widest px-1.5 py-0.5 border border-white/10 rounded-full">
+                            {layer.id}
+                          </span>
+                        </div>
+                        <p className="text-xs text-white-50/60 leading-relaxed line-clamp-2">
+                          {layer.description}
+                        </p>
+                      </div>
+
+                      {/* Tech Pills */}
+                      <div className="hidden md:flex gap-1.5 flex-wrap max-w-xs">
+                        {layer.skills.map((skill, skillIdx) => (
+                          <div
+                            key={skill}
+                            className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-white-50 hover:bg-white/10 transition-colors"
+                            style={{
+                              borderColor: activeLayer === layer.id ? `${layer.color}40` : '',
+                              backgroundColor: activeLayer === layer.id ? `${layer.color}10` : ''
+                            }}
+                          >
+                            {skill}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Expand Indicator */}
+                      <div className="flex-shrink-0 w-7 h-7 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors">
+                        <svg
+                          className={`w-3.5 h-3.5 transition-transform duration-300 ${activeLayer === layer.id ? 'rotate-180' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5 rounded-b-2xl overflow-hidden">
+                      <div
+                        className="h-full rounded-b-2xl transition-all duration-1000"
+                        style={{
+                          width: activeLayer === layer.id ? '100%' : '0%',
+                          backgroundColor: layer.color
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Data Flow Indicator */}
+            <div className="mt-8 flex items-center justify-center gap-3 text-white/20">
+              <div className="h-px w-24 bg-white/10" />
+              <span className="text-[9px] font-black uppercase tracking-[0.3em]">Data Flow Direction</span>
+              <div className="h-px w-24 bg-white/10" />
+            </div>
+          </div>
+
+          {/* ===== OLD SCHEMA: Grid Layout (Backup) =====
+          <div className="relative w-full max-w-[800px] h-[600px] flex items-center justify-center">
             <div className="absolute z-20 w-32 h-32 md:w-44 md:h-44 rounded-full bg-black border-2 border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.1)]">
               <div className="text-center">
                 <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Architecture</p>
@@ -89,13 +200,13 @@ const TechStack = () => {
               <div className="absolute inset-0 rounded-full border border-blue-500/20 animate-ping" />
             </div>
 
-            {/* Orbital Cards - More Vertical Circle */}
             {layers.map((layer, idx) => {
-              const angles = [225, 315, 135, 45];
-              const angle = angles[idx];
-              // Further increased radius for a more spacious layout
-              const radiusX = 220;
-              const radiusY = 180;
+              const gridPositions = [
+                { top: '15%', left: '10%' },
+                { top: '15%', left: '65%' },
+                { top: '65%', left: '10%' },
+                { top: '65%', left: '65%' },
+              ];
 
               return (
                 <div
@@ -104,10 +215,10 @@ const TechStack = () => {
                   className={`blueprint-card absolute z-30 transition-all duration-500 cursor-pointer
                              ${activeLayer === layer.id ? "scale-110" : "hover:scale-105"}`}
                   style={{
-                    top: `calc(50% + ${Math.sin(angle * Math.PI / 180) * radiusY}px)`,
-                    left: `calc(50% + ${Math.cos(angle * Math.PI / 180) * radiusX}px)`,
+                    top: gridPositions[idx].top,
+                    left: gridPositions[idx].left,
                     transform: 'translate(-50%, -50%)',
-                    width: 'min(40vw, 200px)',
+                    width: 'min(35vw, 220px)',
                   }}
                 >
                   <div className={`relative p-5 rounded-2xl border transition-all duration-500 bg-black z-50 group
@@ -138,17 +249,18 @@ const TechStack = () => {
                     </div>
                   </div>
 
-                  {/* Connecting Line to Hub */}
-                  <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-px origin-left pointer-events-none transition-all duration-700
+                  <div className={`absolute left-1/2 top-1/2 h-[2px] origin-left pointer-events-none transition-all duration-700
                                   ${activeLayer === layer.id ? "opacity-100" : "opacity-10"}`}
                     style={{
-                      transform: `rotate(${angle + 180}deg) translateX(-110px)`,
-                      background: `linear-gradient(90deg, transparent, ${layer.color})`
+                      width: `${Math.sqrt(Math.pow(50 - parseInt(gridPositions[idx].left), 2) + Math.pow(50 - parseInt(gridPositions[idx].top), 2))}%`,
+                      transform: `rotate(${Math.atan2(50 - parseInt(gridPositions[idx].top), 50 - parseInt(gridPositions[idx].left)) * 180 / Math.PI}deg)`,
+                      background: `linear-gradient(90deg, ${layer.color}, transparent)`
                     }} />
                 </div>
               );
             })}
           </div>
+          ===== End Old Schema ===== */}
 
           {/* Flexible Detail Panel */}
           <div className="w-full max-w-[600px] min-h-[400px]">
@@ -179,7 +291,7 @@ const TechStack = () => {
                     const tech = techStackIcons.find(t => t.name === skillName);
                     return (
                       <div key={skillName} className="group/skill flex flex-col items-center gap-3">
-                        <div className="w-full aspect-square rounded-2xl bg-black border border-white/5 flex items-center justify-center p-5 group-hover/skill:border-blue-500/50 group-hover/skill:bg-blue-500/5 transition-all duration-500">
+                        <div className="w-full aspect-square rounded-2xl bg-white/20 border border-white/5 flex items-center justify-center p-5 group-hover/skill:border-blue-500/50 group-hover/skill:bg-blue-500/5 transition-all duration-500">
                           {tech ? (
                             <img src={tech.imgPath} alt={skillName} className="w-full h-full object-contain filter brightness-75 group-hover/skill:brightness-110 group-hover/skill:scale-125 transition-all duration-500" />
                           ) : (
